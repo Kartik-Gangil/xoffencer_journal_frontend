@@ -144,7 +144,7 @@ export default function UploadJournalForm({ show }) {
         formData.append("photo", photo.bytes);
         formData.append("marksheet", marksheet.bytes);
 
-        const result = await postData("form-for-publication", formData);
+        const result = await postData("form-for-publication-admin", formData);
 
         if (result.status === true) {
             Swal.fire({

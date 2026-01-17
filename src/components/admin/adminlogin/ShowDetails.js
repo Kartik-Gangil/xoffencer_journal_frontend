@@ -70,6 +70,7 @@ export default function ShowDetails() {
          console.log(`Downloading file with ID: ${id}`);
          const response = await axios.post(
             `https://varsharesearchorganization.com/api/v1/downloadCertificate/${id}`,
+            // `http://localhost:5678/api/v1/downloadCertificate/${id}`,
             null,
             { responseType: "blob" }  // 🔥 Ensures binary data is handled correctly
          );
@@ -104,6 +105,7 @@ export default function ShowDetails() {
          console.log(`Downloading file with ID: ${id}`);
          const response = await axios.post(
             `https://varsharesearchorganization.com/api/v1/download/${id}`,
+            // `http://localhost:5678/api/v1/download/${id}`,
             null,
             { responseType: "blob" }  // 🔥 Ensures binary data is handled correctly
          );
