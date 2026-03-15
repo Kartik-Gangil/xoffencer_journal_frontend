@@ -29,7 +29,7 @@ export default function ShowDetails() {
       subject: "",
       volume: 0,
       issue: 0,
-
+      DOI: ""
    });
 
    useEffect(() => {
@@ -52,7 +52,8 @@ export default function ShowDetails() {
                id: data[0].id,
                subject: data[0].subject,
                volume: data[0].Volume,
-               issue: data[0].Issue
+               issue: data[0].Issue,
+               DOI: data[0]?.DOI || ""
             })
             setLoading(false)
          }
@@ -127,7 +128,6 @@ export default function ShowDetails() {
          console.error("Error downloading file:", error);
       }
    };
-
    return (
       <div>
          <div>
@@ -142,7 +142,7 @@ export default function ShowDetails() {
             </div>
 
             <div style={{ marginTop: 7, fontWeight: 400, fontSize: ' 1.2rem', marginLeft: '7%', letterSpacing: 0.3, marginRight: '7%' }}>
-               <b>Publication #:</b> {data.id}
+               <b>Publication #:</b> XXXXX{data.id}
             </div>
 
             <div style={{ marginTop: 7, fontWeight: 400, fontSize: ' 1.2rem', marginLeft: '7%', letterSpacing: 0.3, marginRight: '7%' }}>
@@ -153,10 +153,12 @@ export default function ShowDetails() {
                <b>Country:</b> India
             </div>
 
-            {/* <div style={{ marginTop: 7, fontWeight: 400, fontSize: ' 1.2rem', marginLeft: '7%', letterSpacing: 0.3, marginRight: '7%' }}>
-            <b>Pages:</b> 1-7
-         </div> */}
-
+            {
+               data.DOI !== "" &&
+               <div style={{ marginTop: 7, fontWeight: 400, fontSize: ' 1.2rem', marginLeft: '7%', letterSpacing: 0.3, marginRight: '7%' }}>
+                     <b>DOI:</b> <a href={`https://doi.org/${data.DOI}`} target="blank">https://doi.org/{data.DOI}</a>
+               </div>
+            }
             <div style={{ marginTop: 7, fontWeight: 400, fontSize: ' 1.2rem', marginLeft: '7%', letterSpacing: 0.3, marginRight: '7%' }}>
                <b>Published In:</b> Volume {data.volume} Issue {data.issue} : {new Date(data.Created_at).getMonth() + 1}-{new Date(data.Created_at).getFullYear()}
             </div>
